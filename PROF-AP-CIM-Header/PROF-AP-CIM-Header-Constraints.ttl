@@ -1,0 +1,473 @@
+@base          <http://iec.ch/TC57/ns/CIM/ontology/Constraints> .
+@prefix profcim: <http://iec.ch/TC57/ns/CIM/prof-cim#> .
+@prefix cims:  <http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#> .
+@prefix owl:   <http://www.w3.org/2002/07/owl#> .
+@prefix cim:   <http://iec.ch/TC57/CIM100#> .
+@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
+@prefix skos:  <http://www.w3.org/2004/02/skos/core#> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix prof:  <http://www.w3.org/ns/dx/prof/#> .
+@prefix eu:    <http://iec.ch/TC57/CIM100-European#> .
+@prefix dct:   <http://purl.org/dc/terms/#> .
+@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix sh:    <http://www.w3.org/ns/shacl#> .
+@prefix ido:   <http://iec.ch/TC57/ns/CIM/IdentifiedObject/constraints/3.0#> .
+@prefix oh:    <http://iec.ch/TC57/ns/CIM/ontology/Constraints#> .
+@prefix dcat:  <http://www.w3.org/ns/dcat#> .
+@prefix dash:  <http://datashapes.org/dash#> .
+@prefix dc:    <http://purl.org/dc/elements/1.1/#> .
+
+oh:Resource.publisher-cardinality
+        a               sh:PropertyShape ;
+        sh:description  "This constraint validates the cardinality of the property (attribute)." ;
+        sh:group        oh:CardinalityGroup ;
+        sh:maxCount     1 ;
+        sh:message      "Missing required property (attribute)." ;
+        sh:minCount     1 ;
+        sh:name         "Resource.publisher-cardinality" ;
+        sh:order        18 ;
+        sh:path         dct:Resource.publisher ;
+        sh:severity     sh:Violation .
+
+oh:Resource.modified-datatype
+        a               sh:PropertyShape ;
+        sh:datatype     xsd:date ;
+        sh:description  "This constraint validates the datatype of the property (attribute)." ;
+        sh:group        oh:DatatypesGroup ;
+        sh:message      "The datatype is not literal or it violates the xsd datatype." ;
+        sh:name         "Resource.modified-datatype" ;
+        sh:nodeKind     sh:Literal ;
+        sh:order        8 ;
+        sh:path         dct:Resource.modified ;
+        sh:severity     sh:Violation .
+
+oh:Ontology.versionInfo-cardinality
+        a               sh:PropertyShape ;
+        sh:description  "This constraint validates the cardinality of the property (attribute)." ;
+        sh:group        oh:CardinalityGroup ;
+        sh:maxCount     1 ;
+        sh:message      "Missing required property (attribute)." ;
+        sh:minCount     1 ;
+        sh:name         "Ontology.versionInfo-cardinality" ;
+        sh:order        2 ;
+        sh:path         owl:Ontology.versionInfo ;
+        sh:severity     sh:Violation .
+
+oh:Resource.rights-cardinality
+        a               sh:PropertyShape ;
+        sh:description  "This constraint validates the cardinality of the property (attribute)." ;
+        sh:group        oh:CardinalityGroup ;
+        sh:maxCount     1 ;
+        sh:message      "Missing required property (attribute)." ;
+        sh:minCount     1 ;
+        sh:name         "Resource.rights-cardinality" ;
+        sh:order        9 ;
+        sh:path         dct:Resource.rights ;
+        sh:severity     sh:Violation .
+
+oh:Ontology.priorVersion-datatype
+        a               sh:PropertyShape ;
+        sh:datatype     xsd:anyURI ;
+        sh:description  "This constraint validates the datatype of the property (attribute)." ;
+        sh:group        oh:DatatypesGroup ;
+        sh:message      "The datatype is not literal or it violates the xsd datatype." ;
+        sh:name         "Ontology.priorVersion-datatype" ;
+        sh:nodeKind     sh:IRI ;
+        sh:order        0 ;
+        sh:path         owl:Ontology.priorVersion ;
+        sh:severity     sh:Violation .
+
+oh:DatatypesGroup  a  sh:PropertyGroup ;
+        rdfs:label  "Datatypes" ;
+        sh:order    1 .
+
+oh:Resource.description-cardinality
+        a               sh:PropertyShape ;
+        sh:description  "This constraint validates the cardinality of the property (attribute)." ;
+        sh:group        oh:CardinalityGroup ;
+        sh:maxCount     1 ;
+        sh:message      "Cardinality violation. Upper bound shall be 1" ;
+        sh:name         "Resource.description-cardinality" ;
+        sh:order        14 ;
+        sh:path         dct:Resource.description ;
+        sh:severity     sh:Violation .
+
+oh:Ontology.versionIRI-cardinality
+        a               sh:PropertyShape ;
+        sh:description  "This constraint validates the cardinality of the property (attribute)." ;
+        sh:group        oh:CardinalityGroup ;
+        sh:maxCount     1 ;
+        sh:message      "Missing required property (attribute)." ;
+        sh:minCount     1 ;
+        sh:name         "Ontology.versionIRI-cardinality" ;
+        sh:order        1 ;
+        sh:path         owl:Ontology.versionIRI ;
+        sh:severity     sh:Violation .
+
+oh:Resource.description-datatype
+        a               sh:PropertyShape ;
+        sh:datatype     xsd:string ;
+        sh:description  "This constraint validates the datatype of the property (attribute)." ;
+        sh:group        oh:DatatypesGroup ;
+        sh:message      "The datatype is not literal or it violates the xsd datatype." ;
+        sh:name         "Resource.description-datatype" ;
+        sh:nodeKind     sh:Literal ;
+        sh:order        14 ;
+        sh:path         dct:Resource.description ;
+        sh:severity     sh:Violation .
+
+oh:Resource.rightsHolder-datatype
+        a               sh:PropertyShape ;
+        sh:datatype     xsd:string ;
+        sh:description  "This constraint validates the datatype of the property (attribute)." ;
+        sh:group        oh:DatatypesGroup ;
+        sh:message      "The datatype is not literal or it violates the xsd datatype." ;
+        sh:name         "Resource.rightsHolder-datatype" ;
+        sh:nodeKind     sh:Literal ;
+        sh:order        16 ;
+        sh:path         dct:Resource.rightsHolder ;
+        sh:severity     sh:Violation .
+
+oh:Ontology  a          sh:NodeShape ;
+        sh:property     oh:Resource.landingPage-datatype , oh:Ontology.imports-datatype , oh:Resource.rightsHolder-cardinality , oh:Resource.license-cardinality , oh:Resource.conformsTo-cardinality , oh:Ontology.versionIRI-cardinality , oh:Resource.language-cardinality , oh:Resource.description-datatype , oh:Resource.issued-datatype , oh:Resource.language-datatype , oh:Ontology.incompatibleWith-datatype , oh:Ontology.priorVersion-cardinality , oh:Resource.conformsTo-datatype , oh:Resource.license-datatype , oh:Ontology.versionInfo-cardinality , oh:Resource.identifier-datatype , oh:Resource.title-cardinality , oh:Resource.rightsHolder-datatype , oh:Ontology.versionInfo-datatype , oh:Resource.modified-cardinality , oh:Resource.creator-cardinality , oh:Resource.identifier-cardinality , oh:Ontology.versionIRI-datatype , oh:Ontology.backwardCompatibleWith-datatype , oh:Resource.keyword-datatype , oh:Resource.title-datatype , oh:Resource.publisher-datatype , oh:Ontology.priorVersion-datatype , oh:Resource.description-cardinality , oh:Resource.rights-datatype , oh:Resource.rights-cardinality , oh:Resource.publisher-cardinality , oh:Resource.theme-datatype , oh:Resource.creator-datatype , oh:Resource.modified-datatype , oh:Resource.issued-cardinality , oh:Resource.keyword-cardinality ;
+        sh:targetClass  owl:Ontology .
+
+oh:Ontology.incompatibleWith-datatype
+        a               sh:PropertyShape ;
+        sh:datatype     xsd:anyURI ;
+        sh:description  "This constraint validates the datatype of the property (attribute)." ;
+        sh:group        oh:DatatypesGroup ;
+        sh:message      "The datatype is not literal or it violates the xsd datatype." ;
+        sh:name         "Ontology.incompatibleWith-datatype" ;
+        sh:nodeKind     sh:IRI ;
+        sh:order        3 ;
+        sh:path         owl:Ontology.incompatibleWith ;
+        sh:severity     sh:Violation .
+
+oh:Ontology.imports-datatype
+        a               sh:PropertyShape ;
+        sh:datatype     xsd:anyURI ;
+        sh:description  "This constraint validates the datatype of the property (attribute)." ;
+        sh:group        oh:DatatypesGroup ;
+        sh:message      "The datatype is not literal or it violates the xsd datatype." ;
+        sh:name         "Ontology.imports-datatype" ;
+        sh:nodeKind     sh:IRI ;
+        sh:order        5 ;
+        sh:path         owl:Ontology.imports ;
+        sh:severity     sh:Violation .
+
+oh:Ontology.backwardCompatibleWith-datatype
+        a               sh:PropertyShape ;
+        sh:datatype     xsd:anyURI ;
+        sh:description  "This constraint validates the datatype of the property (attribute)." ;
+        sh:group        oh:DatatypesGroup ;
+        sh:message      "The datatype is not literal or it violates the xsd datatype." ;
+        sh:name         "Ontology.backwardCompatibleWith-datatype" ;
+        sh:nodeKind     sh:IRI ;
+        sh:order        4 ;
+        sh:path         owl:Ontology.backwardCompatibleWith ;
+        sh:severity     sh:Violation .
+
+oh:Resource.theme-datatype
+        a               sh:PropertyShape ;
+        sh:datatype     xsd:string ;
+        sh:description  "This constraint validates the datatype of the property (attribute)." ;
+        sh:group        oh:DatatypesGroup ;
+        sh:message      "The datatype is not literal or it violates the xsd datatype." ;
+        sh:name         "Resource.theme-datatype" ;
+        sh:nodeKind     sh:Literal ;
+        sh:order        17 ;
+        sh:path         dcat:Resource.theme ;
+        sh:severity     sh:Violation .
+
+oh:Resource.license-cardinality
+        a               sh:PropertyShape ;
+        sh:description  "This constraint validates the cardinality of the property (attribute)." ;
+        sh:group        oh:CardinalityGroup ;
+        sh:maxCount     1 ;
+        sh:message      "Missing required property (attribute)." ;
+        sh:minCount     1 ;
+        sh:name         "Resource.license-cardinality" ;
+        sh:order        6 ;
+        sh:path         dct:Resource.license ;
+        sh:severity     sh:Violation .
+
+oh:AssociationsGroup  a  sh:PropertyGroup ;
+        rdfs:label  "Associations" ;
+        sh:order    2 .
+
+oh:Resource.language-cardinality
+        a               sh:PropertyShape ;
+        sh:description  "This constraint validates the cardinality of the property (attribute)." ;
+        sh:group        oh:CardinalityGroup ;
+        sh:maxCount     1 ;
+        sh:message      "Cardinality violation. Upper bound shall be 1" ;
+        sh:name         "Resource.language-cardinality" ;
+        sh:order        7 ;
+        sh:path         dct:Resource.language ;
+        sh:severity     sh:Violation .
+
+oh:Resource.conformsTo-datatype
+        a               sh:PropertyShape ;
+        sh:datatype     xsd:anyURI ;
+        sh:description  "This constraint validates the datatype of the property (attribute)." ;
+        sh:group        oh:DatatypesGroup ;
+        sh:message      "The datatype is not literal or it violates the xsd datatype." ;
+        sh:name         "Resource.conformsTo-datatype" ;
+        sh:nodeKind     sh:Literal ;
+        sh:order        15 ;
+        sh:path         dct:Resource.conformsTo ;
+        sh:severity     sh:Violation .
+
+oh:Resource.rights-datatype
+        a               sh:PropertyShape ;
+        sh:datatype     xsd:string ;
+        sh:description  "This constraint validates the datatype of the property (attribute)." ;
+        sh:group        oh:DatatypesGroup ;
+        sh:message      "The datatype is not literal or it violates the xsd datatype." ;
+        sh:name         "Resource.rights-datatype" ;
+        sh:nodeKind     sh:Literal ;
+        sh:order        9 ;
+        sh:path         dct:Resource.rights ;
+        sh:severity     sh:Violation .
+
+oh:Resource.conformsTo-cardinality
+        a               sh:PropertyShape ;
+        sh:description  "This constraint validates the cardinality of the property (attribute)." ;
+        sh:group        oh:CardinalityGroup ;
+        sh:message      "Cardinality violation. Lower bound shall be 1" ;
+        sh:minCount     1 ;
+        sh:name         "Resource.conformsTo-cardinality" ;
+        sh:order        15 ;
+        sh:path         dct:Resource.conformsTo ;
+        sh:severity     sh:Violation .
+
+oh:Resource.license-datatype
+        a               sh:PropertyShape ;
+        sh:datatype     xsd:string ;
+        sh:description  "This constraint validates the datatype of the property (attribute)." ;
+        sh:group        oh:DatatypesGroup ;
+        sh:message      "The datatype is not literal or it violates the xsd datatype." ;
+        sh:name         "Resource.license-datatype" ;
+        sh:nodeKind     sh:Literal ;
+        sh:order        6 ;
+        sh:path         dct:Resource.license ;
+        sh:severity     sh:Violation .
+
+oh:Resource.identifier-datatype
+        a               sh:PropertyShape ;
+        sh:datatype     xsd:anyURI ;
+        sh:description  "This constraint validates the datatype of the property (attribute)." ;
+        sh:group        oh:DatatypesGroup ;
+        sh:message      "The datatype is not literal or it violates the xsd datatype." ;
+        sh:name         "Resource.identifier-datatype" ;
+        sh:nodeKind     sh:Literal ;
+        sh:order        19 ;
+        sh:path         dct:Resource.identifier ;
+        sh:severity     sh:Violation .
+
+oh:Ontology.versionInfo-datatype
+        a               sh:PropertyShape ;
+        sh:datatype     xsd:string ;
+        sh:description  "This constraint validates the datatype of the property (attribute)." ;
+        sh:group        oh:DatatypesGroup ;
+        sh:message      "The datatype is not literal or it violates the xsd datatype." ;
+        sh:name         "Ontology.versionInfo-datatype" ;
+        sh:nodeKind     sh:Literal ;
+        sh:order        2 ;
+        sh:path         owl:Ontology.versionInfo ;
+        sh:severity     sh:Violation .
+
+oh:Resource.publisher-datatype
+        a               sh:PropertyShape ;
+        sh:datatype     xsd:string ;
+        sh:description  "This constraint validates the datatype of the property (attribute)." ;
+        sh:group        oh:DatatypesGroup ;
+        sh:message      "The datatype is not literal or it violates the xsd datatype." ;
+        sh:name         "Resource.publisher-datatype" ;
+        sh:nodeKind     sh:Literal ;
+        sh:order        18 ;
+        sh:path         dct:Resource.publisher ;
+        sh:severity     sh:Violation .
+
+oh:CardinalityGroup  a  sh:PropertyGroup ;
+        rdfs:label  "Cardinality" ;
+        sh:order    0 .
+
+oh:Resource.modified-cardinality
+        a               sh:PropertyShape ;
+        sh:description  "This constraint validates the cardinality of the property (attribute)." ;
+        sh:group        oh:CardinalityGroup ;
+        sh:maxCount     1 ;
+        sh:message      "Missing required property (attribute)." ;
+        sh:minCount     1 ;
+        sh:name         "Resource.modified-cardinality" ;
+        sh:order        8 ;
+        sh:path         dct:Resource.modified ;
+        sh:severity     sh:Violation .
+
+oh:Resource.creator-datatype
+        a               sh:PropertyShape ;
+        sh:datatype     xsd:string ;
+        sh:description  "This constraint validates the datatype of the property (attribute)." ;
+        sh:group        oh:DatatypesGroup ;
+        sh:message      "The datatype is not literal or it violates the xsd datatype." ;
+        sh:name         "Resource.creator-datatype" ;
+        sh:nodeKind     sh:Literal ;
+        sh:order        12 ;
+        sh:path         dct:Resource.creator ;
+        sh:severity     sh:Violation .
+
+oh:Resource.title-cardinality
+        a               sh:PropertyShape ;
+        sh:description  "This constraint validates the cardinality of the property (attribute)." ;
+        sh:group        oh:CardinalityGroup ;
+        sh:maxCount     1 ;
+        sh:message      "Missing required property (attribute)." ;
+        sh:minCount     1 ;
+        sh:name         "Resource.title-cardinality" ;
+        sh:order        11 ;
+        sh:path         dct:Resource.title ;
+        sh:severity     sh:Violation .
+
+oh:Resource.issued-datatype
+        a               sh:PropertyShape ;
+        sh:datatype     xsd:dateTime ;
+        sh:description  "This constraint validates the datatype of the property (attribute)." ;
+        sh:group        oh:DatatypesGroup ;
+        sh:message      "The datatype is not literal or it violates the xsd datatype." ;
+        sh:name         "Resource.issued-datatype" ;
+        sh:nodeKind     sh:Literal ;
+        sh:order        10 ;
+        sh:path         dct:Resource.issued ;
+        sh:severity     sh:Violation .
+
+oh:Resource.keyword-datatype
+        a               sh:PropertyShape ;
+        sh:datatype     xsd:string ;
+        sh:description  "This constraint validates the datatype of the property (attribute)." ;
+        sh:group        oh:DatatypesGroup ;
+        sh:message      "The datatype is not literal or it violates the xsd datatype." ;
+        sh:name         "Resource.keyword-datatype" ;
+        sh:nodeKind     sh:Literal ;
+        sh:order        13 ;
+        sh:path         dcat:Resource.keyword ;
+        sh:severity     sh:Violation .
+
+oh:Resource.issued-cardinality
+        a               sh:PropertyShape ;
+        sh:description  "This constraint validates the cardinality of the property (attribute)." ;
+        sh:group        oh:CardinalityGroup ;
+        sh:maxCount     1 ;
+        sh:message      "Missing required property (attribute)." ;
+        sh:minCount     1 ;
+        sh:name         "Resource.issued-cardinality" ;
+        sh:order        10 ;
+        sh:path         dct:Resource.issued ;
+        sh:severity     sh:Violation .
+
+oh:Resource.title-datatype
+        a               sh:PropertyShape ;
+        sh:datatype     xsd:string ;
+        sh:description  "This constraint validates the datatype of the property (attribute)." ;
+        sh:group        oh:DatatypesGroup ;
+        sh:message      "The datatype is not literal or it violates the xsd datatype." ;
+        sh:name         "Resource.title-datatype" ;
+        sh:nodeKind     sh:Literal ;
+        sh:order        11 ;
+        sh:path         dct:Resource.title ;
+        sh:severity     sh:Violation .
+
+oh:Resource.language-datatype
+        a               sh:PropertyShape ;
+        sh:datatype     xsd:string ;
+        sh:description  "This constraint validates the datatype of the property (attribute)." ;
+        sh:group        oh:DatatypesGroup ;
+        sh:message      "The datatype is not literal or it violates the xsd datatype." ;
+        sh:name         "Resource.language-datatype" ;
+        sh:nodeKind     sh:Literal ;
+        sh:order        7 ;
+        sh:path         dct:Resource.language ;
+        sh:severity     sh:Violation .
+
+oh:Resource.creator-cardinality
+        a               sh:PropertyShape ;
+        sh:description  "This constraint validates the cardinality of the property (attribute)." ;
+        sh:group        oh:CardinalityGroup ;
+        sh:maxCount     1 ;
+        sh:message      "Missing required property (attribute)." ;
+        sh:minCount     1 ;
+        sh:name         "Resource.creator-cardinality" ;
+        sh:order        12 ;
+        sh:path         dct:Resource.creator ;
+        sh:severity     sh:Violation .
+
+oh:Ontology.versionIRI-datatype
+        a               sh:PropertyShape ;
+        sh:datatype     xsd:anyURI ;
+        sh:description  "This constraint validates the datatype of the property (attribute)." ;
+        sh:group        oh:DatatypesGroup ;
+        sh:message      "The datatype is not literal or it violates the xsd datatype." ;
+        sh:name         "Ontology.versionIRI-datatype" ;
+        sh:nodeKind     sh:IRI ;
+        sh:order        1 ;
+        sh:path         owl:Ontology.versionIRI ;
+        sh:severity     sh:Violation .
+
+oh:Resource.rightsHolder-cardinality
+        a               sh:PropertyShape ;
+        sh:description  "This constraint validates the cardinality of the property (attribute)." ;
+        sh:group        oh:CardinalityGroup ;
+        sh:maxCount     1 ;
+        sh:message      "Cardinality violation. Upper bound shall be 1" ;
+        sh:name         "Resource.rightsHolder-cardinality" ;
+        sh:order        16 ;
+        sh:path         dct:Resource.rightsHolder ;
+        sh:severity     sh:Violation .
+
+oh:Ontology.priorVersion-cardinality
+        a               sh:PropertyShape ;
+        sh:description  "This constraint validates the cardinality of the property (attribute)." ;
+        sh:group        oh:CardinalityGroup ;
+        sh:maxCount     1 ;
+        sh:message      "Cardinality violation. Upper bound shall be 1" ;
+        sh:name         "Ontology.priorVersion-cardinality" ;
+        sh:order        0 ;
+        sh:path         owl:Ontology.priorVersion ;
+        sh:severity     sh:Violation .
+
+oh:Resource.landingPage-datatype
+        a               sh:PropertyShape ;
+        sh:datatype     xsd:anyURI ;
+        sh:description  "This constraint validates the datatype of the property (attribute)." ;
+        sh:group        oh:DatatypesGroup ;
+        sh:message      "The datatype is not literal or it violates the xsd datatype." ;
+        sh:name         "Resource.landingPage-datatype" ;
+        sh:nodeKind     sh:Literal ;
+        sh:order        20 ;
+        sh:path         dcat:Resource.landingPage ;
+        sh:severity     sh:Violation .
+
+oh:Resource.keyword-cardinality
+        a               sh:PropertyShape ;
+        sh:description  "This constraint validates the cardinality of the property (attribute)." ;
+        sh:group        oh:CardinalityGroup ;
+        sh:maxCount     1 ;
+        sh:message      "Missing required property (attribute)." ;
+        sh:minCount     1 ;
+        sh:name         "Resource.keyword-cardinality" ;
+        sh:order        13 ;
+        sh:path         dcat:Resource.keyword ;
+        sh:severity     sh:Violation .
+
+oh:Resource.identifier-cardinality
+        a               sh:PropertyShape ;
+        sh:description  "This constraint validates the cardinality of the property (attribute)." ;
+        sh:group        oh:CardinalityGroup ;
+        sh:maxCount     1 ;
+        sh:message      "Missing required property (attribute)." ;
+        sh:minCount     1 ;
+        sh:name         "Resource.identifier-cardinality" ;
+        sh:order        19 ;
+        sh:path         dct:Resource.identifier ;
+        sh:severity     sh:Violation .

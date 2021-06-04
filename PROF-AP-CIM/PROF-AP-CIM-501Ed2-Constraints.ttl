@@ -1,0 +1,255 @@
+@base          <http://iec.ch/TC57/ns/CIM/prof-cim/Constraints> .
+@prefix profcim: <http://iec.ch/TC57/ns/CIM/prof-cim/Constraints#> .
+@prefix cims:  <http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#> .
+@prefix owl:   <http://www.w3.org/2002/07/owl#> .
+@prefix cim:   <http://iec.ch/TC57/CIM100#> .
+@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
+@prefix skos:  <http://www.w3.org/2004/02/skos/core#> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix prof:  <http://www.w3.org/ns/dx/prof/#> .
+@prefix eu:    <http://iec.ch/TC57/CIM100-European#> .
+@prefix dct:   <http://purl.org/dc/terms/#> .
+@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix sh:    <http://www.w3.org/ns/shacl#> .
+@prefix ido:   <http://iec.ch/TC57/ns/CIM/IdentifiedObject/constraints/3.0#> .
+@prefix dcat:  <http://www.w3.org/ns/dcat#> .
+@prefix dash:  <http://datashapes.org/dash#> .
+@prefix dc:    <http://purl.org/dc/elements/1.1/#> .
+
+profcim:Profile.hasToken-cardinality
+        a               sh:PropertyShape ;
+        sh:description  "This constraint validates the cardinality of the property (attribute)." ;
+        sh:group        profcim:CardinalityGroup ;
+        sh:maxCount     1 ;
+        sh:message      "Missing required property (attribute)." ;
+        sh:minCount     1 ;
+        sh:name         "Profile.hasToken-cardinality" ;
+        sh:order        0 ;
+        sh:path         prof:Profile.hasToken ;
+        sh:severity     sh:Violation .
+
+profcim:ResourceDescriptor.title-cardinality
+        a               sh:PropertyShape ;
+        sh:description  "This constraint validates the cardinality of the property (attribute)." ;
+        sh:group        profcim:CardinalityGroup ;
+        sh:maxCount     1 ;
+        sh:message      "Missing required property (attribute)." ;
+        sh:minCount     1 ;
+        sh:name         "ResourceDescriptor.title-cardinality" ;
+        sh:order        3 ;
+        sh:path         prof:ResourceDescriptor.title ;
+        sh:severity     sh:Violation .
+
+profcim:Profile.HasResource-cardinality
+        a               sh:PropertyShape ;
+        sh:description  "This constraint validates the cardinality of the association at the used direction." ;
+        sh:group        profcim:CardinalityGroup ;
+        sh:message      "Cardinality violation. Lower bound shall be 1" ;
+        sh:minCount     1 ;
+        sh:name         "Profile.HasResource-cardinality" ;
+        sh:order        4 ;
+        sh:path         prof:Profile.HasResource ;
+        sh:severity     sh:Violation .
+
+profcim:ResourceDescriptor.hasRole-cardinality
+        a               sh:PropertyShape ;
+        sh:description  "This constraint validates the cardinality of the property (attribute)." ;
+        sh:group        profcim:CardinalityGroup ;
+        sh:message      "Cardinality violation. Lower bound shall be 1" ;
+        sh:minCount     1 ;
+        sh:name         "ResourceDescriptor.hasRole-cardinality" ;
+        sh:order        5 ;
+        sh:path         prof:ResourceDescriptor.hasRole ;
+        sh:severity     sh:Violation .
+
+profcim:Profile  a      sh:NodeShape ;
+        sh:property     profcim:Profile.HasResource-valueType , profcim:Profile.HasResource-cardinality , profcim:Profile.IsTransitiveProfileOf-valueType , profcim:Profile.IsProfileOf-valueType , profcim:Profile.hasToken-datatype , profcim:Profile.hasToken-cardinality ;
+        sh:targetClass  prof:Profile .
+
+profcim:ResourceDescriptor.hasArtifact-datatype
+        a               sh:PropertyShape ;
+        sh:datatype     xsd:anyURI ;
+        sh:description  "This constraint validates the datatype of the property (attribute)." ;
+        sh:group        profcim:DatatypesGroup ;
+        sh:message      "The datatype is not literal or it violates the xsd datatype." ;
+        sh:name         "ResourceDescriptor.hasArtifact-datatype" ;
+        sh:nodeKind     sh:Literal ;
+        sh:order        6 ;
+        sh:path         prof:ResourceDescriptor.hasArtifact ;
+        sh:severity     sh:Violation .
+
+profcim:ResourceDescriptor.packageFormat-cardinality
+        a               sh:PropertyShape ;
+        sh:description  "This constraint validates the cardinality of the property (attribute)." ;
+        sh:group        profcim:CardinalityGroup ;
+        sh:maxCount     1 ;
+        sh:message      "Missing required property (attribute)." ;
+        sh:minCount     1 ;
+        sh:name         "ResourceDescriptor.packageFormat-cardinality" ;
+        sh:order        2 ;
+        sh:path         prof:ResourceDescriptor.packageFormat ;
+        sh:severity     sh:Violation .
+
+profcim:ResourceDescriptor.description-cardinality
+        a               sh:PropertyShape ;
+        sh:description  "This constraint validates the cardinality of the property (attribute)." ;
+        sh:group        profcim:CardinalityGroup ;
+        sh:maxCount     1 ;
+        sh:message      "Missing required property (attribute)." ;
+        sh:minCount     1 ;
+        sh:name         "ResourceDescriptor.description-cardinality" ;
+        sh:order        0 ;
+        sh:path         prof:ResourceDescriptor.description ;
+        sh:severity     sh:Violation .
+
+profcim:ResourceDescriptor.description-datatype
+        a               sh:PropertyShape ;
+        sh:datatype     xsd:string ;
+        sh:description  "This constraint validates the datatype of the property (attribute)." ;
+        sh:group        profcim:DatatypesGroup ;
+        sh:message      "The datatype is not literal or it violates the xsd datatype." ;
+        sh:name         "ResourceDescriptor.description-datatype" ;
+        sh:nodeKind     sh:Literal ;
+        sh:order        0 ;
+        sh:path         prof:ResourceDescriptor.description ;
+        sh:severity     sh:Violation .
+
+profcim:ResourceDescriptor.hasArtifact-cardinality
+        a               sh:PropertyShape ;
+        sh:description  "This constraint validates the cardinality of the property (attribute)." ;
+        sh:group        profcim:CardinalityGroup ;
+        sh:maxCount     1 ;
+        sh:message      "Missing required property (attribute)." ;
+        sh:minCount     1 ;
+        sh:name         "ResourceDescriptor.hasArtifact-cardinality" ;
+        sh:order        6 ;
+        sh:path         prof:ResourceDescriptor.hasArtifact ;
+        sh:severity     sh:Violation .
+
+profcim:ResourceDescriptor.format-cardinality
+        a               sh:PropertyShape ;
+        sh:description  "This constraint validates the cardinality of the property (attribute)." ;
+        sh:group        profcim:CardinalityGroup ;
+        sh:maxCount     1 ;
+        sh:message      "Missing required property (attribute)." ;
+        sh:minCount     1 ;
+        sh:name         "ResourceDescriptor.format-cardinality" ;
+        sh:order        4 ;
+        sh:path         prof:ResourceDescriptor.format ;
+        sh:severity     sh:Violation .
+
+profcim:Profile.IsTransitiveProfileOf-valueType
+        a               sh:PropertyShape ;
+        sh:class        prof:Profile ;
+        sh:description  "This constraint validates the value type of the association at the used direction." ;
+        sh:group        profcim:AssociationsGroup ;
+        sh:message      "One of the following does not conform: 1) The value type shall be IRI; 2) The value type shall be an instance of the class: prof:Profile" ;
+        sh:name         "Profile.IsTransitiveProfileOf-valueType" ;
+        sh:nodeKind     sh:IRI ;
+        sh:order        2 ;
+        sh:path         prof:Profile.IsTransitiveProfileOf ;
+        sh:severity     sh:Violation .
+
+profcim:ResourceDescriptor.title-datatype
+        a               sh:PropertyShape ;
+        sh:datatype     xsd:string ;
+        sh:description  "This constraint validates the datatype of the property (attribute)." ;
+        sh:group        profcim:DatatypesGroup ;
+        sh:message      "The datatype is not literal or it violates the xsd datatype." ;
+        sh:name         "ResourceDescriptor.title-datatype" ;
+        sh:nodeKind     sh:Literal ;
+        sh:order        3 ;
+        sh:path         prof:ResourceDescriptor.title ;
+        sh:severity     sh:Violation .
+
+profcim:Profile.HasResource-valueType
+        a               sh:PropertyShape ;
+        sh:class        prof:ResourceDescriptor ;
+        sh:description  "This constraint validates the value type of the association at the used direction." ;
+        sh:group        profcim:AssociationsGroup ;
+        sh:message      "One of the following does not conform: 1) The value type shall be IRI; 2) The value type shall be an instance of the class: prof:ResourceDescriptor" ;
+        sh:name         "Profile.HasResource-valueType" ;
+        sh:nodeKind     sh:IRI ;
+        sh:order        4 ;
+        sh:path         prof:Profile.HasResource ;
+        sh:severity     sh:Violation .
+
+profcim:CardinalityGroup
+        a           sh:PropertyGroup ;
+        rdfs:label  "Cardinality" ;
+        sh:order    0 .
+
+profcim:AssociationsGroup
+        a           sh:PropertyGroup ;
+        rdfs:label  "Associations" ;
+        sh:order    2 .
+
+profcim:ResourceDescriptor
+        a               sh:NodeShape ;
+        sh:property     profcim:ResourceDescriptor.hasArtifact-cardinality , profcim:ResourceDescriptor.packageFormat-cardinality , profcim:ResourceDescriptor.title-datatype , profcim:ResourceDescriptor.hasRole-cardinality , profcim:ResourceDescriptor.title-cardinality , profcim:ResourceDescriptor.format-datatype , profcim:ResourceDescriptor.hasRole-datatype , profcim:ResourceDescriptor.hasArtifact-datatype , profcim:ResourceDescriptor.description-datatype , profcim:ResourceDescriptor.format-cardinality , profcim:ResourceDescriptor.description-cardinality , profcim:ResourceDescriptor.packageFormat-datatype ;
+        sh:targetClass  prof:ResourceDescriptor .
+
+profcim:ResourceDescriptor.format-datatype
+        a               sh:PropertyShape ;
+        sh:datatype     xsd:anyURI ;
+        sh:description  "This constraint validates the datatype of the property (attribute)." ;
+        sh:group        profcim:DatatypesGroup ;
+        sh:message      "The datatype is not literal or it violates the xsd datatype." ;
+        sh:name         "ResourceDescriptor.format-datatype" ;
+        sh:nodeKind     sh:Literal ;
+        sh:order        4 ;
+        sh:path         prof:ResourceDescriptor.format ;
+        sh:severity     sh:Violation .
+
+profcim:ResourceDescriptor.packageFormat-datatype
+        a               sh:PropertyShape ;
+        sh:datatype     xsd:string ;
+        sh:description  "This constraint validates the datatype of the property (attribute)." ;
+        sh:group        profcim:DatatypesGroup ;
+        sh:message      "The datatype is not literal or it violates the xsd datatype." ;
+        sh:name         "ResourceDescriptor.packageFormat-datatype" ;
+        sh:nodeKind     sh:Literal ;
+        sh:order        2 ;
+        sh:path         prof:ResourceDescriptor.packageFormat ;
+        sh:severity     sh:Violation .
+
+profcim:DatatypesGroup
+        a           sh:PropertyGroup ;
+        rdfs:label  "Datatypes" ;
+        sh:order    1 .
+
+profcim:Profile.hasToken-datatype
+        a               sh:PropertyShape ;
+        sh:datatype     xsd:string ;
+        sh:description  "This constraint validates the datatype of the property (attribute)." ;
+        sh:group        profcim:DatatypesGroup ;
+        sh:message      "The datatype is not literal or it violates the xsd datatype." ;
+        sh:name         "Profile.hasToken-datatype" ;
+        sh:nodeKind     sh:Literal ;
+        sh:order        0 ;
+        sh:path         prof:Profile.hasToken ;
+        sh:severity     sh:Violation .
+
+profcim:Profile.IsProfileOf-valueType
+        a               sh:PropertyShape ;
+        sh:class        prof:Profile ;
+        sh:description  "This constraint validates the value type of the association at the used direction." ;
+        sh:group        profcim:AssociationsGroup ;
+        sh:message      "One of the following does not conform: 1) The value type shall be IRI; 2) The value type shall be an instance of the class: prof:Profile" ;
+        sh:name         "Profile.IsProfileOf-valueType" ;
+        sh:nodeKind     sh:IRI ;
+        sh:order        1 ;
+        sh:path         prof:Profile.IsProfileOf ;
+        sh:severity     sh:Violation .
+
+profcim:ResourceDescriptor.hasRole-datatype
+        a               sh:PropertyShape ;
+        sh:description  "This constraint validates the datatype of the property (attribute)." ;
+        sh:group        profcim:DatatypesGroup ;
+        sh:in           ( prof:ResourceRole.validation prof:ResourceRole.constraints prof:ResourceRole.schema prof:ResourceRole.specification prof:ResourceRole.guidance prof:ResourceRole.vocabulary prof:ResourceRole.example prof:ResourceRole.mapping ) ;
+        sh:message      "The datatype is not IRI (Internationalized Resource Identifier) or it is enumerated value not part of the profile." ;
+        sh:name         "ResourceDescriptor.hasRole-datatype" ;
+        sh:nodeKind     sh:IRI ;
+        sh:order        5 ;
+        sh:path         prof:ResourceDescriptor.hasRole ;
+        sh:severity     sh:Violation .

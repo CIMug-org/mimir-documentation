@@ -1,0 +1,433 @@
+@base          <http://iec.ch/TC57/ns/CIM/prof-cim> .
+@prefix profcim: <http://iec.ch/TC57/ns/CIM/prof-cim#> .
+@prefix cims:  <http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#> .
+@prefix owl:   <http://www.w3.org/2002/07/owl#> .
+@prefix cim:   <http://iec.ch/TC57/CIM100#> .
+@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
+@prefix skos:  <http://www.w3.org/2004/02/skos/core#> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix prof:  <http://www.w3.org/ns/dx/prof/#> .
+@prefix eu:    <http://iec.ch/TC57/CIM100-European#> .
+@prefix dct:   <http://purl.org/dc/terms/#> .
+@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix sh:    <http://www.w3.org/ns/shacl#> .
+@prefix dcat:  <http://www.w3.org/ns/dcat#> .
+@prefix dc:    <http://purl.org/dc/elements/1.1/#> .
+
+prof:ResourceRole.specification
+        a                owl:Thing , owl:NamedIndividual ;
+        rdfs:domain      prof:ResourceRole ;
+        rdfs:label       "specification "@en ;
+        profcim:isenum   "True" ;
+        skos:definition  "\nDefining the profile in human-readable form.\nThis role indicates authoritativeness. For a role for a human-readable resource that is not authoritative, use guidance.\n\t"@en .
+
+dct:Distribution.conformsTo
+        a                owl:DatatypeProperty ;
+        rdfs:domain      dct:Distribution ;
+        rdfs:label       "conformsTo"@en ;
+        rdfs:range       xsd:anyURI ;
+        profcim:isdct    "True" ;
+        skos:definition  "An established standard to which the distribution conforms."@en .
+
+dct:Distribution.description
+        a                owl:DatatypeProperty , owl:FunctionalProperty ;
+        rdfs:domain      dct:Distribution ;
+        rdfs:label       "description"@en ;
+        rdfs:range       xsd:string ;
+        profcim:isdct    "True" ;
+        skos:definition  "A free-text account of the distribution."@en .
+
+profcim:Enumeration  a      owl:Class ;
+        rdfs:comment        " An abstract superclass for all Enumerators. "@en ;
+        rdfs:label          " enumeration "@en ;
+        profcim:isAbstract  "true" .
+
+prof:ResourceRole  a     owl:Class ;
+        rdfs:label       "ResourceRole"@en ;
+        rdfs:subClassOf  profcim:Enumeration ;
+        cims:stereotype  "prof" ;
+        profcim:Package  "Package_PROF-AP-CIMProfile" ;
+        owl:oneOf        ( prof:ResourceRole.constraints prof:ResourceRole.example prof:ResourceRole.guidance prof:ResourceRole.mapping prof:ResourceRole.schema prof:ResourceRole.specification prof:ResourceRole.validation prof:ResourceRole.vocabulary ) ;
+        skos:definition  "\nA role that an profile resource, described by a Resource Descriptor, plays.\nThis property is created for the convenience of clients. When profile describers wish to allow clients to discover all profile resources relevant to a Profile without having to navigating an inheritance hierarchy of prof:profileOf relations, this predicate may be used to directly associate inherited Profile Descriptors with the Profile. If this property is present, it should be used consistently and all relevant profile resources a client may need to utilise the profile should be present and described using this predicate.\n\t"@en .
+
+dct:Distribution.identifier
+        a                owl:DatatypeProperty ;
+        rdfs:domain      dct:Distribution ;
+        rdfs:label       "identifier"@en ;
+        rdfs:range       xsd:anyURI ;
+        profcim:isdct    "True" ;
+        skos:definition  "\nAn unambiguous reference to the resource within a given context.\nRecommended practice is to identify the resource by means of a string conforming to an identification system. Examples include International Standard Book Number (ISBN), Digital Object Identifier (DOI), and Uniform Resource Name (URN). Persistent identifiers should be provided as HTTP URIs.\n\t"@en .
+
+profcim:isprof  a     owl:AnnotationProperty ;
+        rdfs:comment  "Flag indicating whether the class is a prof."@en ;
+        rdfs:domain   rdfs:Property , rdfs:Class ;
+        rdfs:label    "isprof\t"@en ;
+        rdfs:range    xsd:boolean .
+
+prof:ResourceRole.constraints
+        a                owl:Thing , owl:NamedIndividual ;
+        rdfs:domain      prof:ResourceRole ;
+        rdfs:label       "constraints "@en ;
+        profcim:isenum   "True" ;
+        skos:definition  "\nDescriptions of obligations, limitations or extensions that the profile defines.\n\nUse this Role when you want to indicate the constraints that the associated Profile imposes on top of base specifications.\n\t"@en .
+
+prof:ResourceDescriptor.hasRole
+        a                owl:DatatypeProperty ;
+        rdfs:domain      prof:ResourceDescriptor ;
+        rdfs:label       "hasRole"@en ;
+        rdfs:range       prof:ResourceRole ;
+        profcim:isprof   "True" ;
+        skos:definition  "\nA description of a resource that defines an aspect - a particular part, feature or role - of a Profile.\nA set of common roles are defined by the Profiles Vocabulary. These are not exhaustive or disjoint, and may be extended for situations where finer-grained description of purpose is necessary. A profile resource may perform multiple roles.\n\t"@en .
+
+profcim:isdct  a      owl:AnnotationProperty ;
+        rdfs:comment  "Flag indicating whether the class is a dct."@en ;
+        rdfs:domain   rdfs:Property , rdfs:Class ;
+        rdfs:label    "isdct\t"@en ;
+        rdfs:range    xsd:boolean .
+
+prof:ResourceDescriptor.packageFormat
+        a                owl:DatatypeProperty ;
+        rdfs:domain      prof:ResourceDescriptor ;
+        rdfs:label       "packageFormat"@en ;
+        rdfs:range       xsd:string ;
+        profcim:isdcat   "True" ;
+        skos:definition  "\nThe package format of the distribution in which one or more data files are grouped together, e.g. to enable a set of related files to be downloaded together.\nThis property is to be used when the files in the distribution are compressed, e.g. in a ZIP file. The format SHOULD be expressed using a media type as defined by IANA media types registry https://www.iana.org/assignments/media-types/, if available.\n\n\t"@en .
+
+<http://iec.ch/TC57/ns/CIM#Ontology>
+        a                 owl:Ontology ;
+        dct:conformsTo    "urn:iso:std:iec:61970-501:draft:ed-2" ;
+        dct:creator       "IEC TC57 WG13"@en ;
+        dct:description   "This is prof vocabulary that is used for IEC CIM Application Profile."@en ;
+        dct:identifier    "urn:uuid:67a27f8a-67f5-46c6-86f7-18917c9359db" ;
+        dct:issued        "2020-12-07T09:22:21Z"^^xsd:dateTime ;
+        dct:language      "en-GB" ;
+        dct:license       "https://creativecommons.org/licenses/by/4.0/"@en ;
+        dct:modified      "2020-11-30"^^xsd:date ;
+        dct:publisher     "IEC"@en ;
+        dct:rights        "\n\t\t\t<Copyright >\n\t\t\t\t <Notice>\n\t\t\t\tCOPYRIGHT (c) IEC 2020\n\t\t\t\tThis version of  RDFS is part of the IEC 61970-600 ed2-PROF-AP-CIMProfile\n\t\t\t\t where full legal notices are provided.\n\tIn case of any differences between the here - below code and the IEC published content,the here - below definition supersedes the IEC publication; \n\tit may contain updates. See history files (if it exists).\n\tThe whole document shall be taken into account in order  to have a full description of this code component.\n\t\t\t\tSee www.iec.ch/CCv1 for copyright details\n\t\t\t\t</Notice>\n\t\t\t\t<Notice>\n\t\t\t\tRDFS for 61970-600 ed2-PROF-AP-CIMProfile version=2.0.0 released 2020-12-07T09:22:21Z as Draft\n\t\t\t\t</Notice>\n\t\t\t\t<License uri =\"www.iec.ch/CCv1 \" kind =\"Draft\" > IEC License </License>\n\t\t\t</Copyright>\n\t"@en ;
+        dct:rightsHolder  "IEC"@en ;
+        dct:title         "Prof vocabulary"@en ;
+        owl:versionIRI    <> ;
+        owl:versionInfo   "2.0.0"@en ;
+        dcat:keyword      "PROF" ;
+        dcat:theme        "vocabulary"@en .
+
+profcim:isFixed  a    owl:AnnotationProperty ;
+        rdfs:comment  " Flag indicating whether the property for a specific object can be updated."@en ;
+        rdfs:domain   rdfs:Property ;
+        rdfs:label    "is fixed property"@en ;
+        rdfs:range    xsd:boolean .
+
+prof:ResourceRole.vocabulary
+        a                owl:Thing , owl:NamedIndividual ;
+        rdfs:domain      prof:ResourceRole ;
+        rdfs:label       "vocabulary "@en ;
+        profcim:isenum   "True" ;
+        skos:definition  "Defines terms used in the profile specification."@en .
+
+prof:Profile.HasResource
+        a                owl:ObjectProperty ;
+        rdfs:domain      prof:Profile ;
+        rdfs:label       "HasResource"@en ;
+        rdfs:range       prof:ResourceDescriptor ;
+        owl:inverseOf    prof:ResourceDescriptor.UsedInProfile ;
+        skos:definition  "A resource which describes the nature of an artifact and the role it plays in relation to the Profile."@en .
+
+dct:Distribution.modified
+        a                owl:DatatypeProperty ;
+        rdfs:domain      dct:Distribution ;
+        rdfs:label       "modified"@en ;
+        rdfs:range       xsd:date ;
+        profcim:isdct    "True" ;
+        skos:definition  "\nDate on which the resource was changed.\nRecommended practice is to describe the date, date/time, or period of time as recommended for the property Date, of which this is a subproperty.\n\t"@en .
+
+profcim:URL  a               owl:Class ;
+        rdfs:label           "URL"@en ;
+        profcim:Package      "Package_PROF-AP-CIMProfile" ;
+        profcim:isPrimitive  "True" ;
+        profcim:isprofcim    "True" ;
+        skos:definition      "A Uniform Resource Locator (URL), colloquially termed a web address, is a reference to a web resource that specifies its location on a computer network and a mechanism for retrieving it. A URL is a specific type of Uniform Resource Identifier (URI), although many people use the two terms interchangeably.URLs occur most commonly to reference web pages (http), but are also used for file transfer (ftp), email (mailto), database access (JDBC), and many other applications."@en .
+
+prof:ResourceDescriptor.UsedInProfile
+        a                owl:ObjectProperty ;
+        rdfs:domain      prof:ResourceDescriptor ;
+        rdfs:label       "UsedInProfile"@en ;
+        rdfs:range       prof:Profile ;
+        profcim:isprof   "True" ;
+        owl:inverseOf    prof:Profile.HasResource ;
+        skos:definition  "A profile which uses the resource."@en .
+
+dct:Distribution.license
+        a                owl:DatatypeProperty ;
+        rdfs:domain      dct:Distribution ;
+        rdfs:label       "license"@en ;
+        rdfs:range       xsd:string ;
+        profcim:isdct    "True" ;
+        skos:definition  "\nA legal document giving official permission to do something with the resource.\nRecommended practice is to identify the license document with a URI. If this is not possible or feasible, a literal value that identifies the license may be provided.\n\t"@en .
+
+cim:String  a                owl:Class ;
+        rdfs:label           "String"@en ;
+        profcim:Package      "Package_PROF-AP-CIMProfile" ;
+        profcim:isPrimitive  "True" ;
+        skos:definition      "A string consisting of a sequence of characters. The character encoding is UTF-8. The string length is unspecified and unlimited."@en .
+
+prof:ResourceDescriptor
+        a                owl:Class ;
+        rdfs:label       "ResourceDescriptor"@en ;
+        profcim:Package  "Package_PROF-AP-CIMProfile" ;
+        profcim:isprof   "True" ;
+        skos:definition  "\nA resource that defines an aspect - a particular part or feature - of a Profile.\nUsed to indicate the formalism (via dct:format) and any adherence to a dct:Standard (via dct:conformsTo) to allow for machine mediation as well as its purpose via relation to a ResourceRole (via hasRole).\n\t"@en .
+
+prof:ResourceRole.schema
+        a                owl:Thing , owl:NamedIndividual ;
+        rdfs:domain      prof:ResourceRole ;
+        rdfs:label       "schema "@en ;
+        profcim:isenum   "True" ;
+        skos:definition  "Machine-readable structural descriptions of data defined by the profile."@en .
+
+prof:ResourceDescriptor.title
+        a                owl:DatatypeProperty ;
+        rdfs:domain      prof:ResourceDescriptor ;
+        rdfs:label       "title"@en ;
+        rdfs:range       xsd:string ;
+        profcim:isdct    "True" ;
+        skos:definition  "\nA name given to the resource descriptor.\n\n\t"@en .
+
+dcat:Distribution.compressFormat
+        a                owl:DatatypeProperty , owl:FunctionalProperty ;
+        rdfs:domain      dcat:Distribution ;
+        rdfs:label       "compressFormat"@en ;
+        rdfs:range       xsd:anyURI ;
+        profcim:isdcat   "True" ;
+        skos:definition  "The compression format of the distribution in which the data is contained in a compressed form, e.g. to reduce the size of the downloadable file."@en .
+
+profcim:Package  a    owl:AnnotationProperty ;
+        rdfs:comment  "Declaration that this is a MOF Package."@en ;
+        rdfs:domain   rdfs:Class ;
+        rdfs:label    "MOF Package"@en ;
+        rdfs:range    xsd:string .
+
+profcim:isPrimitive  a  owl:AnnotationProperty ;
+        rdfs:comment  "Flag indicating whether the class is a Primitive."@en ;
+        rdfs:domain   rdfs:Class ;
+        rdfs:label    "isPrimitive\t"@en ;
+        rdfs:range    xsd:boolean .
+
+prof:ResourceDescriptor.description
+        a                owl:DatatypeProperty ;
+        rdfs:domain      prof:ResourceDescriptor ;
+        rdfs:label       "description"@en ;
+        rdfs:range       xsd:string ;
+        profcim:isdct    "True" ;
+        skos:definition  "A free-text account of the resource descriptor."@en .
+
+profcim:Artifact  a        owl:Class ;
+        rdfs:label         "Artifact"@en ;
+        profcim:Package    "Package_PROF-AP-CIMProfile" ;
+        profcim:isprofcim  "True" ;
+        skos:definition    "The actual profile resource artifact."@en .
+
+cim:Date  a                  owl:Class ;
+        rdfs:label           "Date"@en ;
+        profcim:Package      "Package_PROF-AP-CIMProfile" ;
+        profcim:isPrimitive  "True" ;
+        skos:definition      "Date as \"yyyy-mm-dd\", which conforms with ISO 8601. UTC time zone is specified as \"yyyy-mm-ddZ\". A local timezone relative UTC is specified as \"yyyy-mm-dd(+/-)hh:mm\"."@en .
+
+profcim:isenum  a     owl:AnnotationProperty ;
+        rdfs:comment  "Flag indicating whether the enumerated literal is an enum."@en ;
+        rdfs:domain   rdfs:Property ;
+        rdfs:label    "isenum\t"@en ;
+        rdfs:range    xsd:boolean .
+
+dcat:Distribution.packageFormat
+        a                owl:DatatypeProperty , owl:FunctionalProperty ;
+        rdfs:domain      dcat:Distribution ;
+        rdfs:label       "packageFormat"@en ;
+        rdfs:range       xsd:string ;
+        profcim:isdcat   "True" ;
+        skos:definition  "\nThe package format of the distribution in which one or more data files are grouped together, e.g. to enable a set of related files to be downloaded together.\nThis property is to be used when the files in the distribution are compressed, e.g. in a ZIP file. The format SHOULD be expressed using a media type as defined by IANA media types registry https://www.iana.org/assignments/media-types/, if available.\n\n\t"@en .
+
+profcim:Package_PROF-AP-CIMProfile
+        a             profcim:Package ;
+        rdfs:comment  "This package contains the profile application CIM profile (PROF-AP-CIM) which is used for describing the metadata for the purpose of describing profile configuration and header information for different profiles. "@en .
+
+dcat:Distribution.mediaType
+        a                owl:DatatypeProperty ;
+        rdfs:domain      dcat:Distribution ;
+        rdfs:label       "mediaType"@en ;
+        rdfs:range       xsd:anyURI ;
+        profcim:isdcat   "True" ;
+        skos:definition  "\nThe media type of the distribution as defined by IANA.\n\nThis property SHOULD be used when the media type of the distribution is defined in the IANA media types registry https://www.iana.org/assignments/media-types/, otherwise dct:format MAY be used with different values.\n\t"@en .
+
+profcim:StringIRI  a         owl:Class ;
+        rdfs:label           "StringIRI"@en ;
+        profcim:Package      "Package_PROF-AP-CIMProfile" ;
+        profcim:isPrimitive  "True" ;
+        profcim:isprofcim    "True" ;
+        skos:definition      "\nAn IRI (Internationalized Resource Identifier) within an RDF graph is a Unicode string that conforms to the syntax defined in RFC 3987.\nThe primitive is serialized as literal without language support.\nIRIs in the RDF abstract syntax must be absolute, and may contain a fragment identifier.\nIRI equality: Two IRIs are equal if and only if they are equivalent under Simple String Comparison according to section 5.1 of [RFC3987]. Further normalization must not be performed when comparing IRIs for equality.\nIRIs are a generalization of URIs [RFC3986] that permits a wider range of Unicode characters. Every absolute URI and URL is an IRI, but not every IRI is an URI. When IRIs are used in operations that are only defined for URIs, they must first be converted according to the mapping defined in section 3.1 of [RFC3987]. A notable example is retrieval over the HTTP protocol. The mapping involves UTF-8 encoding of non-ASCII characters, %-encoding of octets not allowed in URIs, and Punycode-encoding of domain names.\n\n\t"@en .
+
+prof:ResourceDescriptor.hasArtifact
+        a                owl:DatatypeProperty ;
+        rdfs:domain      prof:ResourceDescriptor ;
+        rdfs:label       "hasArtifact"@en ;
+        rdfs:range       xsd:anyURI ;
+        profcim:isprof   "True" ;
+        skos:definition  "\nThe URL of a downloadable file with particulars such as its format and role indicated by the Resource Descriptor.\nA property to link from a Resource Descriptor to an actual information resource (rdfs:Resource; an individual) that implements it.\n\t"@en .
+
+profcim:isprofcim  a  owl:AnnotationProperty ;
+        rdfs:comment  "Flag indicating whether the class is a profcim."@en ;
+        rdfs:domain   rdfs:Property , rdfs:Class ;
+        rdfs:label    "isprofcim\t"@en ;
+        rdfs:range    xsd:boolean .
+
+prof:Profile.IsTransitiveProfileOf
+        a                owl:ObjectProperty ;
+        rdfs:domain      prof:Profile ;
+        rdfs:label       "IsTransitiveProfileOf"@en ;
+        rdfs:range       prof:Profile ;
+        profcim:isprof   "True" ;
+        owl:inverseOf    prof:Profile.Profile ;
+        skos:definition  "A specification this Profile conforms to."@en .
+
+dct:Distribution.rights
+        a                owl:DatatypeProperty ;
+        rdfs:domain      dct:Distribution ;
+        rdfs:label       "rights"@en ;
+        rdfs:range       xsd:string ;
+        profcim:isdct    "True" ;
+        skos:definition  "A statement that concerns all rights not addressed with dct:license or dct:accessRights, such as copyright statements."@en .
+
+dcat:Distribution  a        owl:Class ;
+        rdfs:label          "Distribution"@en ;
+        profcim:Package     "Package_PROF-AP-CIMProfile" ;
+        profcim:isAbstract  "True" ;
+        profcim:isdcat      "True" ;
+        skos:definition     "A specific representation of a dataset. A dataset might be available in multiple serializations that may differ in various ways, including natural language, media-type or format, schematic organization, temporal and spatial resolution, level of detail or profiles (which might specify any or all of the above)."@en .
+
+profcim:isConst  a    owl:AnnotationProperty ;
+        rdfs:comment  " Flag indicating whether the property for a specific object can be updated."@en ;
+        rdfs:domain   rdfs:Property ;
+        rdfs:label    "is fixed property"@en ;
+        rdfs:range    xsd:boolean .
+
+dct:Distribution.issued
+        a                owl:DatatypeProperty ;
+        rdfs:domain      dct:Distribution ;
+        rdfs:label       "issued"@en ;
+        rdfs:range       xsd:dateTime ;
+        profcim:isdct    "True" ;
+        skos:definition  "Date of formal issuance (e.g., publication) of the distribution."@en .
+
+profcim:isdcat  a     owl:AnnotationProperty ;
+        rdfs:comment  "Flag indicating whether the class is a dcat."@en ;
+        rdfs:domain   rdfs:Property , rdfs:Class ;
+        rdfs:label    "isdcat\t"@en ;
+        rdfs:range    xsd:boolean .
+
+prof:ResourceRole.mapping
+        a                owl:Thing , owl:NamedIndividual ;
+        rdfs:domain      prof:ResourceRole ;
+        rdfs:label       "mapping "@en ;
+        profcim:isenum   "True" ;
+        skos:definition  "Describes conversions between two specifications."@en .
+
+prof:ResourceRole.validation
+        a                owl:Thing , owl:NamedIndividual ;
+        rdfs:domain      prof:ResourceRole ;
+        rdfs:label       "validation "@en ;
+        profcim:isenum   "True" ;
+        skos:definition  "\nSupplies instructions about how to verify conformance of data to the profile.\nThis role implies inclusion or import of inherited constraints.\n\t"@en .
+
+prof:Profile.IsProfileOf
+        a                owl:ObjectProperty ;
+        rdfs:domain      prof:Profile ;
+        rdfs:label       "IsProfileOf"@en ;
+        rdfs:range       prof:Profile ;
+        profcim:isprof   "True" ;
+        owl:inverseOf    prof:Profile.Profile ;
+        skos:definition  "A specification for which this Profile defines constraints, extensions, or which it uses in combination with other specifications, or provides guidance or explanation about its usage."@en .
+
+prof:Profile.Profile  a  owl:ObjectProperty ;
+        rdfs:domain      prof:Profile ;
+        rdfs:label       "Profile"@en ;
+        rdfs:range       prof:Profile ;
+        owl:inverseOf    prof:Profile.IsProfileOf , prof:Profile.IsTransitiveProfileOf ;
+        skos:definition  "The profile which has defined constraints or extensions."@en , "The profile which conforms to."@en .
+
+prof:ResourceRole.guidance
+        a                owl:Thing , owl:NamedIndividual ;
+        rdfs:domain      prof:ResourceRole ;
+        rdfs:label       "guidance "@en ;
+        profcim:isenum   "True" ;
+        skos:definition  "\nDocuments, in human-readable form, how to use the profile.\n\nMany existing profiles treat their human-readable forms (PDF documents etc.) as authoritative. This role is suggestive of non-authoritativeness. For a role for a human-readable resource that is authoritative, use specification.\n\t"@en .
+
+prof:ResourceRole.example
+        a                owl:Thing , owl:NamedIndividual ;
+        rdfs:domain      prof:ResourceRole ;
+        rdfs:label       "example "@en ;
+        profcim:isenum   "True" ;
+        skos:definition  "Sample instance data conforming to the profile."@en .
+
+dcat:Distribution.downloadURL
+        a                owl:DatatypeProperty ;
+        rdfs:domain      dcat:Distribution ;
+        rdfs:label       "downloadURL"@en ;
+        rdfs:range       xsd:anyURI ;
+        profcim:isdcat   "True" ;
+        skos:definition  "\nThe URL of the downloadable file in a given format. E.g. CSV file or RDF file. The format is indicated by the distribution's dct:format and/or dcat:mediaType.\n\nSHOULD be used for the address at which this distribution is available directly, typically through a HTTP Get request.\n\t"@en .
+
+profcim:isAbstract  a  owl:AnnotationProperty ;
+        rdfs:comment  "Flag indicating whether the class is permitted to have any direct instances."@en ;
+        rdfs:domain   rdfs:Class ;
+        rdfs:label    "is abstract"@en ;
+        rdfs:range    xsd:boolean .
+
+cim:DateTime  a              owl:Class ;
+        rdfs:label           "DateTime"@en ;
+        profcim:Package      "Package_PROF-AP-CIMProfile" ;
+        profcim:isPrimitive  "True" ;
+        skos:definition      "Date and time as \"yyyy-mm-ddThh:mm:ss.sss\", which conforms with ISO 8601. UTC time zone is specified as \"yyyy-mm-ddThh:mm:ss.sssZ\". A local timezone relative UTC is specified as \"yyyy-mm-ddThh:mm:ss.sss-hh:mm\". The second component (shown here as \"ss.sss\") could have any number of digits in its fractional part to allow any kind of precision beyond seconds."@en .
+
+profcim:isUnique  a   owl:AnnotationProperty ;
+        rdfs:comment  " Flag indicating whether the property for a specific object can contain the same value more than once."@en ;
+        rdfs:domain   rdfs:Property ;
+        rdfs:label    "is unique "@en ;
+        rdfs:range    xsd:boolean .
+
+dct:Distribution.format
+        a                owl:DatatypeProperty ;
+        rdfs:domain      dct:Distribution ;
+        rdfs:label       "format"@en ;
+        rdfs:range       xsd:anyURI ;
+        profcim:isdct    "True" ;
+        skos:definition  "The file format of the distribution."@en .
+
+prof:Profile  a          owl:Class ;
+        rdfs:label       "Profile"@en ;
+        profcim:Package  "Package_PROF-AP-CIMProfile" ;
+        profcim:isprof   "True" ;
+        skos:definition  "\nA specification that constrains, extends, combines, or provides guidance or explanation about the usage of other specifications.\n\nThis definition includes what are sometimes called \"application profiles\", \"metadata application profiles\", or \"metadata profiles\".\n\nThe Profile class \"may be used to model aspects of data structure and content (as per profile) or any other declared behaviour where a base specification can be identified and further requirements asserted.\n\t"@en .
+
+prof:ResourceDescriptor.format
+        a                owl:DatatypeProperty ;
+        rdfs:domain      prof:ResourceDescriptor ;
+        rdfs:label       "format"@en ;
+        rdfs:range       xsd:anyURI ;
+        profcim:isdct    "True" ;
+        skos:definition  "The file format of the resource descriptor."@en .
+
+dct:Distribution.title
+        a                owl:DatatypeProperty ;
+        rdfs:domain      dct:Distribution ;
+        rdfs:label       "title"@en ;
+        rdfs:range       xsd:string ;
+        profcim:isdct    "True" ;
+        skos:definition  "A name given to the distribution."@en .
+
+prof:Profile.hasToken
+        a                owl:DatatypeProperty ;
+        rdfs:domain      prof:Profile ;
+        rdfs:label       "hasToken"@en ;
+        rdfs:range       xsd:string ;
+        profcim:isprof   "True" ;
+        skos:definition  "\nThe preferred identifier for the Profile, for use in circumstances where its URI cannot be used.\n\nA simple lexical form of identifier that may be accepted in some circumstances, such as API arguments or in content negotiation, to reference a profile. This is a “preferred term”, since alternative identifiers may be declared and used by any implementation.\n\t"@en .

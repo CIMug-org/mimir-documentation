@@ -1,0 +1,339 @@
+@base          <http://iec.ch/TC57/ns/CIM/ontology> .
+@prefix profcim: <http://iec.ch/TC57/ns/CIM/prof-cim#> .
+@prefix cims:  <http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#> .
+@prefix owl:   <http://www.w3.org/2002/07/owl#> .
+@prefix cim:   <http://iec.ch/TC57/CIM100#> .
+@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
+@prefix skos:  <http://www.w3.org/2004/02/skos/core#> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix prof:  <http://www.w3.org/ns/dx/prof/#> .
+@prefix eu:    <http://iec.ch/TC57/CIM100-European#> .
+@prefix dct:   <http://purl.org/dc/terms/#> .
+@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix sh:    <http://www.w3.org/ns/shacl#> .
+@prefix oh:    <http://iec.ch/TC57/ns/CIM/ontology#> .
+@prefix dcat:  <http://www.w3.org/ns/dcat#> .
+@prefix dc:    <http://purl.org/dc/elements/1.1/#> .
+
+owl:Ontology  a          owl:Class ;
+        rdfs:label       "Ontology"@en ;
+        oh:Package       "Package_OntologyHeaderProfile" ;
+        oh:isAbstract    "False" ;
+        oh:isowl         "True" ;
+        skos:definition  "The class of ontologies."@en .
+
+owl:Ontology.priorVersion
+        a                owl:DatatypeProperty ;
+        rdfs:domain      owl:Ontology ;
+        rdfs:label       "priorVersion"@en ;
+        rdfs:range       xsd:anyURI ;
+        oh:isowl         "True" ;
+        skos:definition  "The annotation property that indicates the predecessor ontology of a given ontology."@en .
+
+owl:Ontology.versionInfo
+        a                owl:DatatypeProperty ;
+        rdfs:domain      owl:Ontology ;
+        rdfs:label       "versionInfo"@en ;
+        rdfs:range       xsd:anyURI ;
+        oh:isowl         "True" ;
+        skos:definition  "The annotation property that provides version information for an ontology or another OWL construct."@en .
+
+oh:isConst  a         owl:AnnotationProperty ;
+        rdfs:comment  " Flag indicating whether the property for a specific object can be updated."@en ;
+        rdfs:domain   rdfs:Property ;
+        rdfs:label    "is fixed property"@en ;
+        rdfs:range    xsd:boolean .
+
+dct:Resource.rights  a   owl:DatatypeProperty ;
+        rdfs:domain      dct:Resource ;
+        rdfs:label       "rights"@en ;
+        rdfs:range       xsd:string ;
+        oh:isdct         "True" ;
+        skos:definition  "A statement that concerns all rights not addressed with dct:license or dct:accessRights, such as copyright statements."@en .
+
+oh:isenum  a          owl:AnnotationProperty ;
+        rdfs:comment  "Flag indicating whether the enumerated literal is an enum."@en ;
+        rdfs:domain   rdfs:Property ;
+        rdfs:label    "isenum\t"@en ;
+        rdfs:range    xsd:boolean .
+
+dct:Resource.conformsTo
+        a                owl:DatatypeProperty ;
+        rdfs:domain      dct:Resource ;
+        rdfs:label       "conformsTo"@en ;
+        rdfs:range       xsd:anyURI ;
+        oh:isdct         "True" ;
+        skos:definition  "An established standard to which the described resource conforms."@en .
+
+oh:Ontology  a            owl:Ontology ;
+        dct:conformsTo    "urn:iso:std:iec:61970-501:draft:ed-2" ;
+        dct:creator       "IEC TC57 WG13"@en ;
+        dct:description   "This is describing the vocabulary for the ontology header standardised by IEC 61970-501:Ed2."@en ;
+        dct:identifier    "urn:uuid:92afed28-9517-472f-aba1-91049edac7b3" ;
+        dct:issued        "2020-12-07T09:20:12Z"^^xsd:dateTime ;
+        dct:language      "en-GB" ;
+        dct:license       "https://creativecommons.org/licenses/by/4.0/"@en ;
+        dct:modified      "2020-11-30"^^xsd:date ;
+        dct:publisher     "IEC"@en ;
+        dct:rights        "\n\t\t\t<Copyright >\n\t\t\t\t <Notice>\n\t\t\t\tCOPYRIGHT (c) IEC 2020\n\t\t\t\tThis version of  RDFS is part of the IEC 61970-600 ed2-OntologyHeaderProfile\n\t\t\t\t where full legal notices are provided.\n\tIn case of any differences between the here - below code and the IEC published content,the here - below definition supersedes the IEC publication; \n\tit may contain updates. See history files (if it exists).\n\tThe whole document shall be taken into account in order  to have a full description of this code component.\n\t\t\t\tSee www.iec.ch/CCv1 for copyright details\n\t\t\t\t</Notice>\n\t\t\t\t<Notice>\n\t\t\t\tRDFS for 61970-600 ed2-OntologyHeaderProfile version=2.0.0 released 2020-12-07T09:20:12Z as Draft\n\t\t\t\t</Notice>\n\t\t\t\t<License uri =\"www.iec.ch/CCv1 \" kind =\"Draft\" > IEC License </License>\n\t\t\t</Copyright>\n\t"@en ;
+        dct:rightsHolder  "IEC"@en ;
+        dct:title         "Ontology header"@en ;
+        owl:versionIRI    <ontology/header> ;
+        owl:versionInfo   "2.0.0"@en ;
+        dcat:keyword      "OH" ;
+        dcat:theme        "vocabulary"@en .
+
+dct:Resource.language
+        a                owl:DatatypeProperty , owl:FunctionalProperty ;
+        rdfs:domain      dct:Resource ;
+        rdfs:label       "language"@en ;
+        rdfs:range       xsd:string ;
+        oh:isdct         "True" ;
+        skos:definition  "\nA language of the item. This refers to the natural language used for textual metadata (i.e. titles, descriptions, etc) of a cataloged resource (i.e. dataset or service) or the textual values of a dataset distribution.\nRecommended practice is to use either a non-literal value representing a language from a controlled vocabulary such as ISO 639-2 or ISO 639-3, or a literal value consisting of an IETF Best Current Practice 47 [IETF-BCP47] language tag.\n\t"@en .
+
+dct:Resource.rightsHolder
+        a                owl:DatatypeProperty , owl:FunctionalProperty ;
+        rdfs:domain      dct:Resource ;
+        rdfs:label       "rightsHolder"@en ;
+        rdfs:range       xsd:string ;
+        oh:isdct         "True" ;
+        skos:definition  "\nInformation about rights held in and over the resource.\nTypically, rights information includes a statement about various property rights associated with the resource, including intellectual property rights. Recommended practice is to refer to a rights statement with a URI. If this is not possible or feasible, a literal value (name, label, or short text) may be provided.\n\t"@en .
+
+profcim:IRI  a           owl:Class ;
+        rdfs:label       "IRI"@en ;
+        oh:Package       "Package_OntologyHeaderProfile" ;
+        oh:isPrimitive   "True" ;
+        oh:isprofcim     "True" ;
+        skos:definition  "\nAn IRI (Internationalized Resource Identifier) within an RDF graph is a Unicode string that conforms to the syntax defined in RFC 3987.\n\nIRIs in the RDF abstract syntax must be absolute, and may contain a fragment identifier.\n\nIRI equality: Two IRIs are equal if and only if they are equivalent under Simple String Comparison according to section 5.1 of [RFC3987]. Further normalization must not be performed when comparing IRIs for equality.\n\nIRIs are a generalization of URIs [RFC3986] that permits a wider range of Unicode characters. Every absolute URI and URL is an IRI, but not every IRI is an URI. When IRIs are used in operations that are only defined for URIs, they must first be converted according to the mapping defined in section 3.1 of [RFC3987]. A notable example is retrieval over the HTTP protocol. The mapping involves UTF-8 encoding of non-ASCII characters, %-encoding of octets not allowed in URIs, and Punycode-encoding of domain names.\n\t"@en .
+
+profcim:URL  a           owl:Class ;
+        rdfs:label       "URL"@en ;
+        oh:Package       "Package_OntologyHeaderProfile" ;
+        oh:isPrimitive   "True" ;
+        oh:isprofcim     "True" ;
+        skos:definition  "A Uniform Resource Locator (URL), colloquially termed a web address, is a reference to a web resource that specifies its location on a computer network and a mechanism for retrieving it. A URL is a specific type of Uniform Resource Identifier (URI), although many people use the two terms interchangeably.URLs occur most commonly to reference web pages (http), but are also used for file transfer (ftp), email (mailto), database access (JDBC), and many other applications."@en .
+
+owl:Ontology.versionIRI
+        a                owl:DatatypeProperty ;
+        rdfs:domain      owl:Ontology ;
+        rdfs:label       "versionIRI"@en ;
+        rdfs:range       xsd:anyURI ;
+        oh:isowl         "True" ;
+        skos:definition  "The property that identifies the version IRI of an ontology."@en .
+
+dct:Resource.identifier
+        a                owl:DatatypeProperty ;
+        rdfs:domain      dct:Resource ;
+        rdfs:label       "identifier"@en ;
+        rdfs:range       xsd:anyURI ;
+        oh:isdct         "True" ;
+        skos:definition  "\nAn unambiguous reference to the resource within a given context.\nRecommended practice is to identify the resource by means of a string conforming to an identification system. Examples include International Standard Book Number (ISBN), Digital Object Identifier (DOI), and Uniform Resource Name (URN). Persistent identifiers should be provided as HTTP URIs.\n\t"@en .
+
+dct:Resource.issued  a   owl:DatatypeProperty ;
+        rdfs:domain      dct:Resource ;
+        rdfs:label       "issued"@en ;
+        rdfs:range       xsd:dateTime ;
+        oh:isdct         "True" ;
+        skos:definition  "\nDate of formal issuance of the resource.\nRecommended practice is to describe the date, date/time, or period of time as recommended for the property Date, of which this is a subproperty.\n\t"@en .
+
+profcim:StringFixedLanguage
+        a                owl:Class ;
+        rdfs:label       "StringFixedLanguage"@en ;
+        oh:Package       "Package_OntologyHeaderProfile" ;
+        oh:isPrimitive   "True" ;
+        oh:isprofcim     "True" ;
+        skos:definition  "\nA string consisting of a sequence of characters. The character encoding is UTF-8. The string length is unspecified and unlimited.\nThe primitive is serialized as literal without language support.\n\t"@en .
+
+cim:String  a            owl:Class ;
+        rdfs:label       "String"@en ;
+        oh:Package       "Package_OntologyHeaderProfile" ;
+        oh:isPrimitive   "True" ;
+        skos:definition  "A string consisting of a sequence of characters. The character encoding is UTF-8. The string length is unspecified and unlimited."@en .
+
+dcat:Resource.theme  a   owl:DatatypeProperty ;
+        rdfs:domain      dcat:Resource ;
+        rdfs:label       "theme"@en ;
+        rdfs:range       xsd:string ;
+        oh:isdcat        "True" ;
+        skos:definition  "A main category of the resource. A resource can have multiple themes."@en .
+
+dct:Resource.publisher
+        a                owl:DatatypeProperty ;
+        rdfs:domain      dct:Resource ;
+        rdfs:label       "publisher"@en ;
+        rdfs:range       xsd:string ;
+        oh:isdct         "True" ;
+        skos:definition  "An entity responsible for making the resource available."@en .
+
+dcat:Resource.landingPage
+        a                owl:DatatypeProperty ;
+        rdfs:domain      dcat:Resource ;
+        rdfs:label       "landingPage"@en ;
+        rdfs:range       xsd:anyURI ;
+        oh:isdcat        "True" ;
+        skos:definition  "\nA Web page that can be navigated to in a Web browser to gain access to the catalog, a dataset, its distributions and/or additional information.\n\nIf the distribution(s) are accessible only through a landing page (i.e. direct download URLs are not known), then the landing page link should be duplicated as accessURL on a distribution.\n\t"@en .
+
+oh:isUnique  a        owl:AnnotationProperty ;
+        rdfs:comment  " Flag indicating whether the property for a specific object can contain the same value more than once."@en ;
+        rdfs:domain   rdfs:Property ;
+        rdfs:label    "is unique "@en ;
+        rdfs:range    xsd:boolean .
+
+cim:Date  a              owl:Class ;
+        rdfs:label       "Date"@en ;
+        oh:Package       "Package_OntologyHeaderProfile" ;
+        oh:isPrimitive   "True" ;
+        skos:definition  "Date as \"yyyy-mm-dd\", which conforms with ISO 8601. UTC time zone is specified as \"yyyy-mm-ddZ\". A local timezone relative UTC is specified as \"yyyy-mm-dd(+/-)hh:mm\"."@en .
+
+profcim:StringIRI  a     owl:Class ;
+        rdfs:label       "StringIRI"@en ;
+        oh:Package       "Package_OntologyHeaderProfile" ;
+        oh:isPrimitive   "True" ;
+        oh:isprofcim     "True" ;
+        skos:definition  "\nAn IRI (Internationalized Resource Identifier) within an RDF graph is a Unicode string that conforms to the syntax defined in RFC 3987.\nThe primitive is serialized as literal without language support.\nIRIs in the RDF abstract syntax must be absolute, and may contain a fragment identifier.\nIRI equality: Two IRIs are equal if and only if they are equivalent under Simple String Comparison according to section 5.1 of [RFC3987]. Further normalization must not be performed when comparing IRIs for equality.\nIRIs are a generalization of URIs [RFC3986] that permits a wider range of Unicode characters. Every absolute URI and URL is an IRI, but not every IRI is an URI. When IRIs are used in operations that are only defined for URIs, they must first be converted according to the mapping defined in section 3.1 of [RFC3987]. A notable example is retrieval over the HTTP protocol. The mapping involves UTF-8 encoding of non-ASCII characters, %-encoding of octets not allowed in URIs, and Punycode-encoding of domain names.\n\n\t"@en .
+
+oh:isdcat  a          owl:AnnotationProperty ;
+        rdfs:comment  "Flag indicating whether the class is a dcat."@en ;
+        rdfs:domain   rdfs:Property , rdfs:Class ;
+        rdfs:label    "isdcat\t"@en ;
+        rdfs:range    xsd:boolean .
+
+oh:Package_OntologyHeaderProfile
+        a             oh:Package ;
+        rdfs:comment  "This package contains the profile application CIM profile (PROF-AP-CIM) which is used for describing the metadata for the purpose of describing profile configuration and header information for different profiles. "@en .
+
+oh:isFixed  a         owl:AnnotationProperty ;
+        rdfs:comment  " Flag indicating whether the property for a specific object can be updated."@en ;
+        rdfs:domain   rdfs:Property ;
+        rdfs:label    "is fixed property"@en ;
+        rdfs:range    xsd:boolean .
+
+oh:Enumeration  a      owl:Class ;
+        rdfs:comment   " An abstract superclass for all Enumerators. "@en ;
+        rdfs:label     " enumeration "@en ;
+        oh:isAbstract  "true" .
+
+owl:Ontology.backwardCompatibleWith
+        a                owl:DatatypeProperty ;
+        rdfs:domain      owl:Ontology ;
+        rdfs:label       "backwardCompatibleWith"@en ;
+        rdfs:range       xsd:anyURI ;
+        oh:isowl         "True" ;
+        skos:definition  "The annotation property that indicates that a given ontology is backward compatible with another ontology."@en .
+
+dct:Resource.description
+        a                owl:DatatypeProperty , owl:FunctionalProperty ;
+        rdfs:domain      dct:Resource ;
+        rdfs:label       "description"@en ;
+        rdfs:range       xsd:string ;
+        oh:isdct         "True" ;
+        skos:definition  "\nAn account of the resource.\nDescription may include but is not limited to: an abstract, a table of contents, a graphical representation, or a free-text account of the resource.\n\t"@en .
+
+oh:isPrimitive  a     owl:AnnotationProperty ;
+        rdfs:comment  "Flag indicating whether the class is a Primitive."@en ;
+        rdfs:domain   rdfs:Class ;
+        rdfs:label    "isPrimitive\t"@en ;
+        rdfs:range    xsd:boolean .
+
+dct:Resource.license  a  owl:DatatypeProperty ;
+        rdfs:domain      dct:Resource ;
+        rdfs:label       "license"@en ;
+        rdfs:range       xsd:string ;
+        oh:isdct         "True" ;
+        skos:definition  "\nA legal document giving official permission to do something with the resource.\nRecommended practice is to identify the license document with a URI. If this is not possible or feasible, a literal value that identifies the license may be provided.\n\t"@en .
+
+owl:Ontology.imports  a  owl:DatatypeProperty ;
+        rdfs:domain      owl:Ontology ;
+        rdfs:label       "imports"@en ;
+        rdfs:range       xsd:anyURI ;
+        oh:isowl         "True" ;
+        skos:definition  "The property that is used for importing other ontologies into a given ontology."@en .
+
+oh:isprofcim  a       owl:AnnotationProperty ;
+        rdfs:comment  "Flag indicating whether the class is a profcim."@en ;
+        rdfs:domain   rdfs:Property , rdfs:Class ;
+        rdfs:label    "isprofcim\t"@en ;
+        rdfs:range    xsd:boolean .
+
+dcat:Resource  a         owl:Class ;
+        rdfs:label       "Resource"@en ;
+        oh:Package       "Package_OntologyHeaderProfile" ;
+        oh:isAbstract    "True" ;
+        oh:isdcat        "True" ;
+        skos:definition  "Resource published or curated by a single agent."@en .
+
+oh:isowl  a           owl:AnnotationProperty ;
+        rdfs:comment  "Flag indicating whether the class is a owl."@en ;
+        rdfs:domain   rdfs:Property , rdfs:Class ;
+        rdfs:label    "isowl"@en ;
+        rdfs:range    xsd:boolean .
+
+oh:Package  a         owl:AnnotationProperty ;
+        rdfs:comment  "Declaration that this is a MOF Package."@en ;
+        rdfs:domain   rdfs:Class ;
+        rdfs:label    "MOF Package"@en ;
+        rdfs:range    xsd:string .
+
+dct:Resource.title  a    owl:DatatypeProperty ;
+        rdfs:domain      dct:Resource ;
+        rdfs:label       "title"@en ;
+        rdfs:range       xsd:string ;
+        oh:isdct         "True" ;
+        skos:definition  "A name given to the resource."@en .
+
+dct:Resource.modified
+        a                owl:DatatypeProperty ;
+        rdfs:domain      dct:Resource ;
+        rdfs:label       "modified"@en ;
+        rdfs:range       xsd:date ;
+        oh:isdct         "True" ;
+        skos:definition  "\nMost recent date on which the item was changed, updated or modified.\nRecommended practice is to describe the date, date/time, or period of time as recommended for the property Date, of which this is a subproperty.\n\t"@en .
+
+oh:isdct  a           owl:AnnotationProperty ;
+        rdfs:comment  "Flag indicating whether the class is a dct."@en ;
+        rdfs:domain   rdfs:Property , rdfs:Class ;
+        rdfs:label    "isdct\t"@en ;
+        rdfs:range    xsd:boolean .
+
+dct:Resource.creator  a  owl:DatatypeProperty ;
+        rdfs:domain      dct:Resource ;
+        rdfs:label       "creator"@en ;
+        rdfs:range       xsd:string ;
+        oh:isdct         "True" ;
+        skos:definition  "\nAn entity responsible for making the resource.\nRecommended practice is to identify the creator with a URI. If this is not possible or feasible, a literal value that identifies the creator may be provided.\n\t"@en .
+
+dcat:Resource.keyword
+        a                owl:DatatypeProperty ;
+        rdfs:domain      dcat:Resource ;
+        rdfs:label       "keyword"@en ;
+        rdfs:range       xsd:string ;
+        oh:isdcat        "True" ;
+        skos:definition  "A keyword or tag describing a resource."@en .
+
+cim:DateTime  a          owl:Class ;
+        rdfs:label       "DateTime"@en ;
+        oh:Package       "Package_OntologyHeaderProfile" ;
+        oh:isPrimitive   "True" ;
+        skos:definition  "Date and time as \"yyyy-mm-ddThh:mm:ss.sss\", which conforms with ISO 8601. UTC time zone is specified as \"yyyy-mm-ddThh:mm:ss.sssZ\". A local timezone relative UTC is specified as \"yyyy-mm-ddThh:mm:ss.sss-hh:mm\". The second component (shown here as \"ss.sss\") could have any number of digits in its fractional part to allow any kind of precision beyond seconds."@en .
+
+dcat:Dataset  a          owl:Class ;
+        rdfs:label       "Dataset"@en ;
+        rdfs:subClassOf  dcat:Resource ;
+        oh:Package       "Package_OntologyHeaderProfile" ;
+        oh:isAbstract    "True" ;
+        oh:isdcat        "True" ;
+        skos:definition  "A collection of data, published or curated by a single source, and available for access or download in one or more representations."@en .
+
+owl:Ontology.incompatibleWith
+        a                owl:DatatypeProperty ;
+        rdfs:domain      owl:Ontology ;
+        rdfs:label       "incompatibleWith"@en ;
+        rdfs:range       xsd:anyURI ;
+        oh:isowl         "True" ;
+        skos:definition  "The annotation property that indicates that a given ontology is incompatible with another ontology."@en .
+
+oh:isAbstract  a      owl:AnnotationProperty ;
+        rdfs:comment  "Flag indicating whether the class is permitted to have any direct instances."@en ;
+        rdfs:domain   rdfs:Class ;
+        rdfs:label    "is abstract"@en ;
+        rdfs:range    xsd:boolean .

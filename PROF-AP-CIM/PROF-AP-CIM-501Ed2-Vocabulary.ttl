@@ -1,0 +1,67 @@
+@base          <http://iec.ch/TC57/ns/CIM/prof-cim> .
+@prefix profcim: <http://iec.ch/TC57/ns/CIM/prof-cim#> .
+@prefix cims:  <http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#> .
+@prefix papcim: <http://iec.ch/TC57/ns/CIM/prof-ap-cim#> .
+@prefix owl:   <http://www.w3.org/2002/07/owl#> .
+@prefix cim:   <http://iec.ch/TC57/CIM100#> .
+@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
+@prefix skos:  <http://www.w3.org/2004/02/skos/core#> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix prof:  <http://www.w3.org/ns/dx/prof/#> .
+@prefix eu:    <http://iec.ch/TC57/CIM100-European#> .
+@prefix dct:   <http://purl.org/dc/terms/#> .
+@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix sh:    <http://www.w3.org/ns/shacl#> .
+@prefix dcat:  <http://www.w3.org/ns/dcat#> .
+@prefix dc:    <http://purl.org/dc/elements/1.1/#> .
+
+papcim:urn:uuid:5d5921bd-12b3-4c46-bc4a-598efb16f161
+        a                  prof:ResourceDescriptor ;
+        dct:description    "Vocabulary for IEC CIM Application Profile (IEC 61970-501:Ed2)." ;
+        dct:format         "https://www.iana.org/assignments/media-types/application/rdf+xml" ;
+        dct:packageformat  "https://www.iana.org/assignments/media-types/application/rdf+xml" ;
+        dct:title          "PROF-AP-CIM Vocabulary"@en ;
+        prof:hasArtifact   <file://Prof_501Ed2_7Dec-Mod.rdf> ;
+        prof:hasRole       prof:ResourceRole.vocabulary .
+
+papcim:Ontology  a        owl:Ontology ;
+        dct:conformsTo    "urn:iso:std:iec:61970-501:draft:ed-2" ;
+        dct:creator       "IEC TC57 WG13"@en ;
+        dct:description   "This is prof vocabulary that is used for IEC CIM Application Profile."@en ;
+        dct:identifier    "urn:uuid:67a27f8a-67f5-46c6-86f7-18917c9359db" ;
+        dct:issued        "2020-12-07T09:22:21Z"^^xsd:dateTime ;
+        dct:language      "en-GB" ;
+        dct:license       "https://creativecommons.org/licenses/by/4.0/"@en ;
+        dct:modified      "2020-11-30"^^xsd:date ;
+        dct:publisher     "IEC"@en ;
+        dct:rights        "\n\t\t\t<Copyright >\n\t\t\t\t <Notice>\n\t\t\t\tCOPYRIGHT (c) IEC 2020\n\t\t\t\tThis version of  RDFS is part of the IEC 61970-600 ed2-PROF-AP-CIMProfile\n\t\t\t\t where full legal notices are provided.\n\tIn case of any differences between the here - below code and the IEC published content,the here - below definition supersedes the IEC publication; \n\tit may contain updates. See history files (if it exists).\n\tThe whole document shall be taken into account in order  to have a full description of this code component.\n\t\t\t\tSee www.iec.ch/CCv1 for copyright details\n\t\t\t\t</Notice>\n\t\t\t\t<Notice>\n\t\t\t\tRDFS for 61970-600 ed2-PROF-AP-CIMProfile version=2.0.0 released 2020-12-07T09:22:21Z as Draft\n\t\t\t\t</Notice>\n\t\t\t\t<License uri =\"www.iec.ch/CCv1 \" kind =\"Draft\" > IEC License </License>\n\t\t\t</Copyright>\n\t"@en ;
+        dct:rightsHolder  "IEC"@en ;
+        dct:title         "Prof vocabulary"@en ;
+        owl:imports       <file://Prof_501Ed2_7Dec-Mod.rdf> , <file://PROF-AP-CIMProfile-constraints.rdf> ;
+        owl:versionIRI    <prof-ap-cim/2.0> ;
+        owl:versionInfo   "2.0.0"@en ;
+        dcat:keyword      "PROF" ;
+        dcat:theme        "vocabulary"@en .
+
+papcim:urn:uuid:1743b928-1896-45f0-89e5-84139d6d867d
+        a                  prof:ResourceDescriptor ;
+        dct:description    "Guidance document for IEC CIM Application Profile (IEC 61970-501:Ed2)." ;
+        dct:format         "https://www.iana.org/assignments/media-types/application/pdf" ;
+        dct:packageformat  "https://www.iana.org/assignments/media-types/application/pdf" ;
+        dct:title          "PROF-AP-CIM Guidance Document"@en ;
+        prof:hasArtifact   <file://PROF_CIM_Guidance_Document.pdf> ;
+        prof:hasRole       prof:ResourceRole.guidance .
+
+papcim:urn:uuid:69913d78-f0a3-4024-a97b-b06970e85cbc
+        a                  prof:ResourceDescriptor ;
+        dct:description    "Constraints for IEC CIM Application Profile (IEC 61970-501:Ed2)." ;
+        dct:format         "https://www.iana.org/assignments/media-types/application/rdf+xml" ;
+        dct:packageformat  "https://www.iana.org/assignments/media-types/application/rdf+xml" ;
+        dct:title          "PROF-AP-CIM Constraints"@en ;
+        prof:hasArtifact   <file://PROF-AP-CIMProfile-constraints.rdf> ;
+        prof:hasRole       prof:ResourceRole.constraints .
+
+papcim:urn:uuid:67a27f8a-67f5-46c6-86f7-18917c9359db
+        a                 prof:Profile ;
+        prof:hasResource  papcim:urn:uuid:69913d78-f0a3-4024-a97b-b06970e85cbc , papcim:urn:uuid:5d5921bd-12b3-4c46-bc4a-598efb16f161 , papcim:urn:uuid:1743b928-1896-45f0-89e5-84139d6d867d ;
+        prof:hasToken     "PROF-AP-CIM" .
